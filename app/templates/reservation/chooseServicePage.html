@@ -1,0 +1,25 @@
+{% extends "components/base.html" %}
+
+{% block styles %} 
+<link rel="stylesheet" href={{ url_for("static", filename="styles/reservation.css") }}> 
+{% endblock %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<form action="/reservation/choose-day" method="POST">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+  <div class="input-group mb-4">
+    <label for="service-dropdown" class="input-group-text">Enter date: </label>
+    <select class="form-control" id="service-dropdown" name="service">
+      {% for service in services %}
+        <option class="dropdown-item" type="button">{{service.name}}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-light">Submit</button>
+  </div>
+</form>
+{% endblock %}

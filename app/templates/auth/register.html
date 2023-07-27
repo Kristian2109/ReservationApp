@@ -1,0 +1,48 @@
+{% extends "components/base.html" %}
+
+{% block styles %} 
+<link rel="stylesheet" href={{ url_for("static", filename="styles/register.css") }}> 
+{% endblock %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<form action="/auth/register" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <div class="row mb-3">
+        <div class="col col-6">
+            <label for="first_name" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="first_name" name="first_name">
+        </div>
+        <div class="col col-6">
+            <label for="first_name" class="form-label">Second Name</label>
+            <input type="text" class="form-control" id="second_name" name="second_name">
+        </div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+        <label for="phone_number" class="form-label">Phone Number</label>
+        <input type="text" class="form-control" id="phone_number" name="phone_number">
+    </div>
+    <div class="mb-3">
+      <label for="password1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password1" name="password1">
+    </div>
+    <div class="mb-3">
+        <label for="password2" class="form-label">Repeat Password</label>
+        <input type="password" class="form-control" id="password2" name="password2">
+    </div>  
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-light">Submit</button>
+    </div>
+</form>
+{% endblock %}

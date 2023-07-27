@@ -1,0 +1,39 @@
+{% extends "components/base.html" %}
+
+{% block styles %} 
+<link rel="stylesheet" href={{ url_for("static", filename="styles/reservation.css") }}> 
+{% endblock %}
+
+{% block title %}Reservation overview{% endblock %}
+
+{% block content %}
+<form action="/reservation", method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <input type="hidden" name="service_id" value="{{data['service_id']}}"/>
+    <input type="hidden" name="time" value="{{data['time']}}"/>
+    <input type="hidden" name="employee_id" value="{{data['employee_id']}}"/>
+    <h1 class="text-center mb-3">Your reservation overview</h1>
+    <table class="table">
+        <thead>
+            <th scope="col">Service</th>
+            <th scope="col">Time</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Price</th>
+            <th scope="col">Employee name</th>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr class="table-light">
+                <td>{{data["service_name"]}}</td>
+                <td>{{data["time"]}}</td>
+                <td>{{data["duration"]}} Minutes</td>
+                <td>{{data["price"]}} Euro</td>
+                <td>{{data["employee_name"]}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-light">Submit</button>
+    </div>
+</form>
+
+{% endblock %}

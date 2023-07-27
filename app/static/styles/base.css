@@ -1,0 +1,50 @@
+body {
+    background-color: #212121;
+    color: whitesmoke;
+}
+
+
+footer {
+    margin: 0;
+    width: 100%;
+    color: white;
+}
+
+footer p {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.7rem;
+}
+
+.contacts {
+    margin: 1rem auto;
+    width: 100%;
+    text-align: center;
+}
+
+.contacts a {
+    margin: 20px;
+    color: white;
+    font-size: 0.5rem;
+}
+
+.contacts a:hover {
+    color: aqua;
+}
+
+#server-message {
+    margin: 1rem auto;
+    font-size: 1.2rem;
+}
+
+form {
+    margin: 2rem 20%;
+}
+
+label {
+    font-size: 0.9rem;
+}
+
+#emailHelp {
+    color: whitesmoke;
+}

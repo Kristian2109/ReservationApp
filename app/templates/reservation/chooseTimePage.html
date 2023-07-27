@@ -1,0 +1,28 @@
+{% extends "components/base.html" %}
+
+{% block styles %} 
+<link rel="stylesheet" href={{ url_for("static", filename="styles/reservation.css") }}> 
+{% endblock %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<form action="/reservation/overview"  method="POST">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+  <input type="hidden" name="service" value="{{ service }}"/>
+  <input type="hidden" name="day" value="{{ day }}"/>
+  <div class="input-group mb-4">
+    <label for="minutes-dropdown" class="input-group-text">Enter time: </label>
+    <select class="form-control" id="minutes-dropdown" name="time">
+        {% for time in possible_times %}
+            {% set minutes_str = "00" if time.minutes == 0 else time.minutes %}
+            <option class="dropdown-item" type="button" value="{{ time.hours }}:{{ minutes_str }}">{{time.hours}}:{{minutes_str}}</option>
+        {% endfor %}
+    </select>
+  </div>
+  <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-light">Submit</button>
+  </div>
+</form>
+{% endblock %}

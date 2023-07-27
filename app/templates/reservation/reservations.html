@@ -1,0 +1,38 @@
+{% extends "components/base.html" %}
+
+{% block styles %} 
+<link rel="stylesheet" href={{ url_for("static", filename="styles/reservation.css") }}> 
+{% endblock %}
+
+{% block title %}Reservation overview{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="text-center mb-5" style="margin-top: 2rem;">Your reservations overview</h1>
+    <table class="table table-bordered border-dark mb-3">
+        {% if not reservations %}
+            <h2> No reservations yet! <a href="/reservation/create">Book one!</a></h2>
+        {% else %}
+            <thead>
+                <th scope="col">Service</th>
+                <th scope="col">Time</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Price</th>
+                <th scope="col">Employee name</th>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                    <tr class="table-light">
+                        <td>{{reservation.service.name}}</td>
+                        <td>{{reservation.time_begin}}</td>
+                        <td>{{reservation.service.duration_in_minutes}} Minutes</td>
+                        <td>{{reservation.service.price_euro}} Euro</td>
+                        <td>{{reservation.employee.first_name}} {{reservation.employee.second_name}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        {% endif %}
+    </table>
+</div>
+
+{% endblock %}

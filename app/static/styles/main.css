@@ -1,0 +1,23 @@
+h1 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+.card {
+    margin: 2rem 20%;
+}
+
+.card a {
+    margin: auto 1rem;
+}
+
+.carousel-item {
+    margin: 2rem 20%;
+}
+
+.carousel-image {
+    height: 400px;
+}
